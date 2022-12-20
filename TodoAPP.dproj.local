@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2022/07/28 08:46:47.000.461,=C:\Users\Marcelo Menezes\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2022/12/04 18:19:16.000.560,=C:\Users\Marcelo Menezes\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2022/12/04 18:28:08.000.307,D:\Delphi Estudos\TodoAPP\scr\views\views.main.pas=C:\Users\Marcelo Menezes\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2022/12/04 18:28:08.000.307,D:\Delphi Estudos\TodoAPP\scr\views\views.main.dfm=C:\Users\Marcelo Menezes\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2022/12/04 18:30:58.000.258,D:\Delphi Estudos\TodoAPP\TodoAPP.dproj=C:\Users\Marcelo Menezes\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2022/12/04 18:33:07.000.437,=D:\Delphi Estudos\TodoAPP\Unit1.pas</Transaction>
+    <Transaction>2022/12/04 18:33:53.000.210,D:\Delphi Estudos\TodoAPP\scr\views\views.login.pas=D:\Delphi Estudos\TodoAPP\Unit1.pas</Transaction>
+    <Transaction>2022/12/04 18:33:53.000.210,D:\Delphi Estudos\TodoAPP\scr\views\views.login.dfm=D:\Delphi Estudos\TodoAPP\Unit1.dfm</Transaction>
+    <Transaction>2022/12/04 19:13:17.000.139,=D:\Delphi Estudos\TodoAPP\Unit1.pas</Transaction>
+    <Transaction>2022/12/04 19:13:34.000.074,D:\Delphi Estudos\TodoAPP\scr\utils\Utils.pas=D:\Delphi Estudos\TodoAPP\Unit1.pas</Transaction>
+    <Transaction>2022/12/04 20:18:51.000.745,=D:\Delphi Estudos\TodoAPP\Unit1.pas</Transaction>
+    <Transaction>2022/12/04 20:19:12.000.067,D:\Delphi Estudos\TodoAPP\Unit1.pas=D:\Delphi Estudos\TodoAPP\scr\models\models.usuario.pas</Transaction>
+    <Transaction>2022/12/04 20:30:07.000.490,=D:\Delphi Estudos\TodoAPP\Unit1.pas</Transaction>
+    <Transaction>2022/12/04 20:30:25.000.152,D:\Delphi Estudos\TodoAPP\Unit1.pas=D:\Delphi Estudos\TodoAPP\scr\controllers\controllers.usuario.pas</Transaction>
+    <Transaction>2022/12/05 12:50:01.000.404,=D:\Delphi Estudos\TodoAPP\Unit1.pas</Transaction>
+    <Transaction>2022/12/05 12:50:59.000.859,D:\Delphi Estudos\TodoAPP\Unit1.pas=D:\Delphi Estudos\TodoAPP\scr\dao\dao.dmconnection.pas</Transaction>
+    <Transaction>2022/12/05 12:50:59.000.859,D:\Delphi Estudos\TodoAPP\Unit1.dfm=D:\Delphi Estudos\TodoAPP\scr\dao\dao.dmconnection.dfm</Transaction>
+    <Transaction>2022/12/07 16:38:30.000.217,=D:\Delphi Estudos\TodoAPP\Unit1.pas</Transaction>
+    <Transaction>2022/12/07 16:38:57.000.545,D:\Delphi Estudos\TodoAPP\scr\dao\dao.getconnection.pas=D:\Delphi Estudos\TodoAPP\Unit1.pas</Transaction>
+    <Transaction>2022/12/11 19:40:08.000.427,=D:\Delphi Estudos\TodoAPP\Unit1.pas</Transaction>
+    <Transaction>2022/12/13 16:43:48.000.877,=D:\Delphi Estudos\TodoAPP\Unit1.pas</Transaction>
+    <Transaction>2022/12/13 16:43:58.000.927,D:\Delphi Estudos\TodoAPP\scr\views\views.main.pas=D:\Delphi Estudos\TodoAPP\Unit1.pas</Transaction>
+    <Transaction>2022/12/13 16:43:58.000.927,D:\Delphi Estudos\TodoAPP\scr\views\views.main.dfm=D:\Delphi Estudos\TodoAPP\Unit1.dfm</Transaction>
+    <Transaction>2022/12/14 10:22:45.000.712,=D:\Delphi Estudos\TodoAPP\scr\views\views.todo.pas</Transaction>
+    <Transaction>2022/12/15 17:43:54.000.761,=D:\Delphi Estudos\TodoAPP\Unit1.pas</Transaction>
+    <Transaction>2022/12/15 17:44:08.000.724,=D:\Delphi Estudos\TodoAPP\Unit1.pas</Transaction>
+    <Transaction>2022/12/15 17:44:27.000.570,D:\Delphi Estudos\TodoAPP\scr\views\views.dfm=D:\Delphi Estudos\TodoAPP\Unit1.dfm</Transaction>
+    <Transaction>2022/12/15 17:44:27.000.570,D:\Delphi Estudos\TodoAPP\scr\views\views.pas=D:\Delphi Estudos\TodoAPP\Unit1.pas</Transaction>
+    <Transaction>2022/12/15 17:46:37.000.607,D:\Delphi Estudos\TodoAPP\scr\views\views.config=</Transaction>
+    <Transaction>2022/12/15 17:47:01.000.442,=D:\Delphi Estudos\TodoAPP\Unit1.pas</Transaction>
+    <Transaction>2022/12/15 17:47:13.000.739,D:\Delphi Estudos\TodoAPP\scr\views\views.pas=D:\Delphi Estudos\TodoAPP\Unit1.pas</Transaction>
+    <Transaction>2022/12/15 17:47:13.000.739,D:\Delphi Estudos\TodoAPP\scr\views\views.dfm=D:\Delphi Estudos\TodoAPP\Unit1.dfm</Transaction>
+    <Transaction>2022/12/15 17:48:34.000.365,=D:\Delphi Estudos\TodoAPP\scr\views\views.config.pas</Transaction>
+    <Transaction>2022/12/16 13:26:46.000.632,=D:\Delphi Estudos\TodoAPP\Unit1.pas</Transaction>
+    <Transaction>2022/12/16 13:27:14.000.715,D:\Delphi Estudos\TodoAPP\Unit1.pas=D:\Delphi Estudos\TodoAPP\scr\views\views.criar.usuario.pas</Transaction>
+    <Transaction>2022/12/16 13:27:14.000.715,D:\Delphi Estudos\TodoAPP\Unit1.dfm=D:\Delphi Estudos\TodoAPP\scr\views\views.criar.usuario.dfm</Transaction>
+  </Transactions>
+	<ProjectSortOrder AutoSort="0" SortType="0">
+    <File Path="scr"/>
+    <File Path="scr\controllers"/>
+    <File Path="scr\controllers\controllers.usuario.pas"/>
+    <File Path="scr\dao"/>
+    <File Path="scr\dao\dao.dmconnection.pas"/>
+    <File Path="scr\dao\dao.dmconnection.dfm"/>
+    <File Path="scr\dao\dao.getconnection.pas"/>
+    <File Path="scr\models"/>
+    <File Path="scr\models\models.usuario.pas"/>
+    <File Path="scr\utils"/>
+    <File Path="scr\utils\Utils.pas"/>
+    <File Path="scr\views"/>
+    <File Path="scr\views\views.login.pas"/>
+    <File Path="scr\views\views.login.dfm"/>
+    <File Path="scr\views\views.main.pas"/>
+    <File Path="scr\views\views.main.dfm"/>
+    <File Path="scr\views\views.todo.pas"/>
+    <File Path="scr\views\views.todo.dfm"/>
+    <File Path="scr\views\views.config.pas"/>
+    <File Path="scr\views\views.config.dfm"/>
+    <File Path="scr\views\views.criar.usuario.pas"/>
+    <File Path="scr\views\views.criar.usuario.dfm"/>
+  </ProjectSortOrder>
+</BorlandProject>

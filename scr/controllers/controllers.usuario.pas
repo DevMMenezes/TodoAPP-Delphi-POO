@@ -9,7 +9,7 @@ uses
   FireDAC.DApt,
   FireDAC.Stan.Param,
   FireDAC.Comp.Client,
-  Data.DB, Vcl.DBGrids;
+  Data.DB, Vcl.DBGrids, Vcl.DBCGrids;
 
 type
 
@@ -224,7 +224,6 @@ function TUsuariosController.ConsultarPorID(ID: Integer; out sError: String)
   : TResultConsultaByID;
 var
   oQuery: TFDQuery;
-  ResultConsultaByID: TResultConsultaByID;
 begin
   { Criando instâncias da minha query e configurando com conexão }
   oQuery := TFDQuery.Create(nil);

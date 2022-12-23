@@ -22,8 +22,8 @@
     <Transaction>2022/12/07 16:38:57.000.545,D:\Delphi Estudos\TodoAPP\scr\dao\dao.getconnection.pas=D:\Delphi Estudos\TodoAPP\Unit1.pas</Transaction>
     <Transaction>2022/12/11 19:40:08.000.427,=D:\Delphi Estudos\TodoAPP\Unit1.pas</Transaction>
     <Transaction>2022/12/13 16:43:48.000.877,=D:\Delphi Estudos\TodoAPP\Unit1.pas</Transaction>
-    <Transaction>2022/12/13 16:43:58.000.927,D:\Delphi Estudos\TodoAPP\scr\views\views.main.pas=D:\Delphi Estudos\TodoAPP\Unit1.pas</Transaction>
     <Transaction>2022/12/13 16:43:58.000.927,D:\Delphi Estudos\TodoAPP\scr\views\views.main.dfm=D:\Delphi Estudos\TodoAPP\Unit1.dfm</Transaction>
+    <Transaction>2022/12/13 16:43:58.000.927,D:\Delphi Estudos\TodoAPP\scr\views\views.main.pas=D:\Delphi Estudos\TodoAPP\Unit1.pas</Transaction>
     <Transaction>2022/12/14 10:22:45.000.712,=D:\Delphi Estudos\TodoAPP\scr\views\views.todo.pas</Transaction>
     <Transaction>2022/12/15 17:43:54.000.761,=D:\Delphi Estudos\TodoAPP\Unit1.pas</Transaction>
     <Transaction>2022/12/15 17:44:08.000.724,=D:\Delphi Estudos\TodoAPP\Unit1.pas</Transaction>
@@ -35,19 +35,25 @@
     <Transaction>2022/12/15 17:47:13.000.739,D:\Delphi Estudos\TodoAPP\scr\views\views.dfm=D:\Delphi Estudos\TodoAPP\Unit1.dfm</Transaction>
     <Transaction>2022/12/15 17:48:34.000.365,=D:\Delphi Estudos\TodoAPP\scr\views\views.config.pas</Transaction>
     <Transaction>2022/12/16 13:26:46.000.632,=D:\Delphi Estudos\TodoAPP\Unit1.pas</Transaction>
-    <Transaction>2022/12/16 13:27:14.000.715,D:\Delphi Estudos\TodoAPP\Unit1.pas=D:\Delphi Estudos\TodoAPP\scr\views\views.criar.usuario.pas</Transaction>
     <Transaction>2022/12/16 13:27:14.000.715,D:\Delphi Estudos\TodoAPP\Unit1.dfm=D:\Delphi Estudos\TodoAPP\scr\views\views.criar.usuario.dfm</Transaction>
+    <Transaction>2022/12/16 13:27:14.000.715,D:\Delphi Estudos\TodoAPP\Unit1.pas=D:\Delphi Estudos\TodoAPP\scr\views\views.criar.usuario.pas</Transaction>
+    <Transaction>2022/12/22 19:38:30.676,=D:\Delphi Estudos\TodoAPP\Unit1.pas</Transaction>
+    <Transaction>2022/12/22 19:39:00.501,D:\Delphi Estudos\TodoAPP\scr\models\models.todo.pas=D:\Delphi Estudos\TodoAPP\Unit1.pas</Transaction>
+    <Transaction>2022/12/22 19:53:20.260,=D:\Delphi Estudos\TodoAPP\Unit1.pas</Transaction>
+    <Transaction>2022/12/22 19:53:38.021,D:\Delphi Estudos\TodoAPP\scr\controllers\controllers.todo.pas=D:\Delphi Estudos\TodoAPP\Unit1.pas</Transaction>
   </Transactions>
 	<ProjectSortOrder AutoSort="0" SortType="0">
     <File Path="scr"/>
     <File Path="scr\controllers"/>
     <File Path="scr\controllers\controllers.usuario.pas"/>
+    <File Path="scr\controllers\controllers.todo.pas"/>
     <File Path="scr\dao"/>
     <File Path="scr\dao\dao.dmconnection.pas"/>
     <File Path="scr\dao\dao.dmconnection.dfm"/>
     <File Path="scr\dao\dao.getconnection.pas"/>
     <File Path="scr\models"/>
     <File Path="scr\models\models.usuario.pas"/>
+    <File Path="scr\models\models.todo.pas"/>
     <File Path="scr\utils"/>
     <File Path="scr\utils\Utils.pas"/>
     <File Path="scr\views"/>

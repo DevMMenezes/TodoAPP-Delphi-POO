@@ -6,24 +6,27 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls,
-  Vcl.Buttons, controllers.usuario, dxGDIPlusClasses;
+  Vcl.Buttons, controllers.usuario, dxGDIPlusClasses, ShadowBox;
 
 type
   TfrmLogin = class(TForm)
-    pnBase: TPanel; { rgb(110,49,20) }
-    ImageFundo: TImage;
-    EditSenha: TEdit;
+    pnFundoLogin: TPanel;
+    LblTodoTitle: TLabel;
+    LblMDev: TLabel;
+    LblLogin: TLabel;
+    Image1: TImage;
     EditUsuario: TEdit;
-    LbUsuario: TLabel;
-    LbSenha: TLabel;
-    BtnOK: TButton;
-    BtnFechar: TButton;
-    LbDev: TLabel;
+    EditSenha: TEdit;
+    BtnOK: TPanel;
+    LblDesenvolvidopor: TLabel;
+    pnClose: TPanel;
+    btnClose: TImage;
     procedure FormShow(Sender: TObject);
     procedure BtnFecharClick(Sender: TObject);
-    procedure BtnOKClick(Sender: TObject);
+    procedure BtnOK1Click(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure btnCloseClick(Sender: TObject);
+    procedure BtnOKClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -40,12 +43,17 @@ implementation
 
 uses views.main, Utils, models.usuario, dao.dmconnection;
 
-procedure TfrmLogin.BtnFecharClick(Sender: TObject);
+procedure TfrmLogin.btnCloseClick(Sender: TObject);
 begin
-  Close;
+  Application.Terminate;
 end;
 
-procedure TfrmLogin.BtnOKClick(Sender: TObject);
+procedure TfrmLogin.BtnFecharClick(Sender: TObject);
+begin
+  close;
+end;
+
+procedure TfrmLogin.BtnOK1Click(Sender: TObject);
 var
   oUsuario: TUsuarioModels;
   cUsuario: TUsuariosController;
@@ -91,10 +99,51 @@ begin
   end;
 end;
 
-procedure TfrmLogin.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure TfrmLogin.BtnOKClick(Sender: TObject);
+var
+  oUsuario: TUsuarioModels;
+  cUsuario: TUsuariosController;
+  sError: String;
+  rRetornosLogin: TRetornosLogin;
 begin
-  frmLogin := nil;
-  Action := caFree;
+  { Criando a instâncias da minha model }
+  oUsuario := TUsuarioModels.Create;
+
+  try
+    try
+      { Com a instância criada, atribuo a classe instanciada }
+      with oUsuario do
+      begin
+        UsuarioLogin := UpperCase(EditUsuario.Text);
+        Senha := EditSenha.Text;
+      end;
+
+      { Chamo a função para validar o usuário do controller e recebo numa classe record
+        para capturar os vários retornos que podem serem enviados. }
+      rRetornosLogin := cUsuario.ValidaLoginUsuario(oUsuario, sError);
+
+      { Valido se o retorno é para liberar o login ou não }
+      if rRetornosLogin.bLogado then
+      begin
+        frmLogin.Destroy;
+        Application.CreateForm(TfrmMain, frmMain);
+        frmMain.Showmodal;
+      end
+      else
+      begin
+        ShowMessage('Erro ao validar as credenciais!');
+        EditSenha.SetFocus;
+      end;
+    except
+      on E: Exception do
+      begin
+        ShowMessage(E.Message + ' : ' + sError);
+      end;
+    end;
+  finally
+    { Liberando as classes da memória }
+    oUsuario.Free;
+  end;
 end;
 
 procedure TfrmLogin.FormKeyDown(Sender: TObject; var Key: Word;
@@ -102,14 +151,14 @@ procedure TfrmLogin.FormKeyDown(Sender: TObject; var Key: Word;
 begin
   if Key = VK_RETURN then
   begin
-    BtnOK.Click;
+    BtnOKClick(Self);
   end
 end;
 
 procedure TfrmLogin.FormShow(Sender: TObject);
 begin
-  ArredondarCantos(EditUsuario);
-  ArredondarCantos(EditSenha);
+  ArredondarCantos(frmLogin);
+  ArredondarCantos(BtnOK);
 end;
 
 end.

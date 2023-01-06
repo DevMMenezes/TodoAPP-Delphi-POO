@@ -11,21 +11,39 @@ uses
   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Comp.DataSet,
   FireDAC.Stan.Async,
-  FireDAC.DApt, dao.dmconnection, Vcl.ExtCtrls, dxGDIPlusClasses, views.todo;
+  FireDAC.DApt, dao.dmconnection, Vcl.ExtCtrls, dxGDIPlusClasses, views.todo,
+  Vcl.Menus;
 
 type
   TfrmMain = class(TForm)
-    pnFundo: TPanel;
-    pnDock: TPanel;
-    BtnTodo: TSpeedButton;
-    BtnConfig: TSpeedButton;
-    BtnHome: TSpeedButton;
-    pnSelect: TPanel;
+    pnBase: TPanel;
+    LblTodoTitle: TLabel;
+    LblMDev: TLabel;
+    ImgLogo: TImage;
+    EditConsTodo: TEdit;
+    pnClose: TPanel;
+    btnClose: TImage;
+    pnDashboard: TPanel;
+    pnTodos: TPanel;
+    pnSelected: TPanel;
+    pnImgPerfil: TPanel;
+    ImgPerfil: TImage;
+    LblNomePerfil: TLabel;
+    pnConfig: TPanel;
+    btnConfigs: TImage;
+    pnConfigs: TPanel;
+    btnConfigsUsers: TPanel;
     procedure FormShow(Sender: TObject);
     procedure BtnTodoClick(Sender: TObject);
-    procedure BtnHomeClick(Sender: TObject);
     procedure BtnConfigClick(Sender: TObject);
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure btnCloseClick(Sender: TObject);
+    procedure pnTodosClick(Sender: TObject);
+    procedure pnDashboardClick(Sender: TObject);
+    procedure btnConfigsMouseEnter(Sender: TObject);
+    procedure btnConfigsUsersMouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+    procedure btnConfigsUsersClick(Sender: TObject);
+    procedure btnConfigsUsersMouseLeave(Sender: TObject);
   private
     { Private declarations }
   public
@@ -41,34 +59,74 @@ implementation
 
 uses views.login, Utils, views.config;
 
-procedure TfrmMain.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure TfrmMain.FormShow(Sender: TObject);
+begin
+  ArredondarCantos(EditConsTodo);
+  ArredondarCantos(frmMain);
+  ArredondarCantos5(pnSelected);
+  ArredondarCantosCircular(pnImgPerfil);
+
+end;
+
+procedure TfrmMain.pnDashboardClick(Sender: TObject);
+begin
+  pnSelected.Width := pnDashboard.Width;
+  pnSelected.Left := pnDashboard.Left;
+  pnDashboard.Font.Color := $FFFFFF;
+  pnTodos.Font.Color := $3F2D15;
+  ArredondarCantos5(pnSelected);
+end;
+
+procedure TfrmMain.pnTodosClick(Sender: TObject);
+begin
+  pnSelected.Width := pnTodos.Width;
+  pnSelected.Left := pnTodos.Left;
+  pnTodos.Font.Color := $FFFFFF;
+  pnDashboard.Font.Color := $3F2D15;
+  ArredondarCantos5(pnSelected);
+
+
+  CriarFormularioShowModal(TFrmTodo, FrmTodo, 0);
+
+end;
+
+procedure TfrmMain.btnCloseClick(Sender: TObject);
 begin
   Application.Terminate;
 end;
 
-procedure TfrmMain.FormShow(Sender: TObject);
-begin
-   ArredondarCantos(pnDock);
-
-end;
-
 procedure TfrmMain.BtnConfigClick(Sender: TObject);
 begin
-  pnSelect.Left := BtnConfig.Left;
 
-  CriarFormularioShowModal(TFrmConfig, FrmConfig,0);
+
+  CriarFormularioShowModal(TFrmConfig, FrmConfig, 0);
 end;
 
-procedure TfrmMain.BtnHomeClick(Sender: TObject);
+procedure TfrmMain.btnConfigsMouseEnter(Sender: TObject);
 begin
-  pnSelect.Left := BtnHome.Left;
+  pnConfigs.Visible := true;
+end;
+
+procedure TfrmMain.btnConfigsUsersClick(Sender: TObject);
+begin
+  CriarFormularioShowModal(TFrmConfig, FrmConfig, 0);
+end;
+
+procedure TfrmMain.btnConfigsUsersMouseLeave(Sender: TObject);
+begin
+    pnConfigs.Visible := false;
+end;
+
+procedure TfrmMain.btnConfigsUsersMouseUp(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+begin
+  pnConfigs.Visible := false;
 end;
 
 procedure TfrmMain.BtnTodoClick(Sender: TObject);
 begin
-  pnSelect.Left := BtnTodo.Left;
 
-  CriarFormularioShowmodal(TFrmTodo, FrmTodo,0);
+  CriarFormularioShowModal(TFrmTodo, FrmTodo, 0);
 end;
 
 end.

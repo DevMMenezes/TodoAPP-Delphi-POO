@@ -10,7 +10,8 @@ uses
   Vcl.StdCtrls, controllers.usuario, FireDAC.Stan.Intf, FireDAC.Stan.Option,
   FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
   FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet,
-  FireDAC.Comp.Client, Vcl.Menus, Utils, models.usuario, views.criar.usuario;
+  FireDAC.Comp.Client, Vcl.Menus, Utils, models.usuario, views.criar.usuario,
+  Vcl.AppEvnts;
 
 type
   TfrmConfig = class(TForm)
@@ -27,6 +28,7 @@ type
     procedure BtnCriarClick(Sender: TObject);
     procedure A1Click(Sender: TObject);
     procedure DBGridUsuariosDblClick(Sender: TObject);
+
   private
     { Private declarations }
   public
@@ -79,6 +81,7 @@ begin
   end;
 
 end;
+
 
 procedure TfrmConfig.BtnConsClick(Sender: TObject);
 var

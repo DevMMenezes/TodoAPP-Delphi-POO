@@ -23,7 +23,6 @@ object frmConfig: TfrmConfig
     TabOrder = 0
     object pgTabUsuarios: TTabSheet
       Caption = 'Usu'#225'rios'
-      ExplicitLeft = 0
       object DBGridUsuarios: TDBGrid
         Left = 0
         Top = 48

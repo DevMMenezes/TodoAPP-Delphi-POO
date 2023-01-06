@@ -3,20 +3,40 @@ unit views.todo;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
-  System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.Grids, Vcl.DBGrids,
+  Winapi.Windows,
+  Winapi.Messages,
+  System.SysUtils,
+  System.Variants,
+  System.Classes,
+  Vcl.Graphics,
+  Vcl.Controls,
+  Vcl.Forms,
+  Vcl.Dialogs,
+  Data.DB,
+  Vcl.Grids,
+  Vcl.DBGrids,
   Vcl.DBCGrids,
-  Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.DBCtrls,
-  Vcl.Buttons, models.todo, controllers.todo, FireDAC.Stan.Intf,
+  Vcl.StdCtrls,
+  Vcl.ExtCtrls,
+  Vcl.DBCtrls,
+  Vcl.Buttons,
+  FireDAC.Stan.Intf,
   FireDAC.Stan.Option,
-  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
-  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet,
-  FireDAC.Comp.Client;
+  FireDAC.Stan.Param,
+  FireDAC.Stan.Error,
+  FireDAC.DatS,
+  FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf,
+  FireDAC.Stan.Async,
+  FireDAC.DApt,
+  FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client,
+  Vcl.AppEvnts,
+  models.todo,
+  controllers.todo;
 
 type
   TfrmTodo = class(TForm)
-    DBGridAFazer: TDBCtrlGrid;
     DBGridFazendo: TDBCtrlGrid;
     DBGridPronto: TDBCtrlGrid;
     DSAFazer: TDataSource;
@@ -25,28 +45,37 @@ type
     FDQueryAFazer: TFDQuery;
     FDQueryRealizando: TFDQuery;
     FDQueryPronto: TFDQuery;
-    LblCod: TLabel;
-    LblStatus: TLabel;
-    DBTextCod: TDBText;
     FDQueryAFazerID: TIntegerField;
-    DBTextNome: TDBText;
-    Shape3: TShape;
     BtnAdd: TBitBtn;
     FDQueryAFazerTITULO: TStringField;
     FDQueryAFazerDESCRICAO: TStringField;
     FDQueryAFazerSTATUS: TStringField;
-    Shape1: TShape;
     Label1: TLabel;
-    DBText1: TDBText;
-    DBText2: TDBText;
+    DBTextCodR: TDBText;
+    DBTextDescR: TDBText;
     LblRealizando: TLabel;
-    DBText3: TDBText;
+    DBTextDescP: TDBText;
     Label2: TLabel;
     Label3: TLabel;
-    DBText4: TDBText;
-    Shape2: TShape;
+    DBTextCodP: TDBText;
+    DBGridAFazer: TDBCtrlGrid;
+    DBTextCodA: TDBText;
+    DBTextDescA: TDBText;
+    LblCod: TLabel;
+    LblStatus: TLabel;
+    ApplicationEvents: TApplicationEvents;
+    pnStatusR: TPanel;
+    Panel1: TPanel;
+    pnStatusA: TPanel;
     procedure BtnAddClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure ApplicationEventsMessage(var Msg: tagMSG; var Handled: Boolean);
+    procedure DBGridProntoDragOver(Sender, Source: TObject; X, Y: Integer;
+      State: TDragState; var Accept: Boolean);
+    procedure DBGridAFazerDragDrop(Sender, Source: TObject; X, Y: Integer);
+    procedure AtualizarDadosTDBCtrlGrid;
+    procedure DBGridFazendoDragDrop(Sender, Source: TObject; X, Y: Integer);
+    procedure DBGridProntoDragDrop(Sender, Source: TObject; X, Y: Integer);
   private
     { Private declarations }
   public
@@ -60,7 +89,39 @@ implementation
 
 {$R *.dfm}
 
-uses controllers.usuario;
+uses controllers.usuario, Utils, dao.dmconnection;
+
+procedure TfrmTodo.ApplicationEventsMessage(var Msg: tagMSG;
+  var Handled: Boolean);
+var
+  i: smallint;
+begin
+  if (Msg.message = WM_MOUSEWHEEL) then
+  begin
+    Msg.message := WM_KEYDOWN;
+    Msg.lParam := 0;
+    i := HiWord(Msg.wParam);
+    if i > 0 then
+      Msg.wParam := VK_UP
+    else
+      Msg.wParam := VK_DOWN;
+    Handled := False;
+  end;
+end;
+
+procedure TfrmTodo.AtualizarDadosTDBCtrlGrid;
+var
+  cTodo: TTodosController;
+  sError: String;
+begin
+  { Carrega todos os DBGrids Atualizados }
+  cTodo.CarregaTodosPorStatus('A', FDQueryAFazer, DBGridAFazer,
+    DSAFazer, sError);
+  cTodo.CarregaTodosPorStatus('R', FDQueryRealizando, DBGridFazendo,
+    DSRealizando, sError);
+  cTodo.CarregaTodosPorStatus('P', FDQueryPronto, DBGridPronto,
+    DSPronto, sError);
+end;
 
 procedure TfrmTodo.BtnAddClick(Sender: TObject);
 var
@@ -69,32 +130,170 @@ var
   sError: String;
 begin
   oTodo := TTodo.Create;
-
   try
     try
 
     except
       on E: Exception do
       begin
-        ShowMessage(E.Message + ' ' + sError);
+        ShowMessage(E.message + sError);
       end;
     end;
   finally
   end;
-
 end;
 
-procedure TfrmTodo.FormShow(Sender: TObject);
+procedure TfrmTodo.DBGridAFazerDragDrop(Sender, Source: TObject; X, Y: Integer);
 var
+  oTodo: TTodo;
   cTodo: TTodosController;
   sError: String;
 begin
-  cTodo.CarregaTodosPorStatus('A', FDQueryAFazer, DBGridAFazer,
-    DSAFazer, sError);
-  cTodo.CarregaTodosPorStatus('R', FDQueryRealizando, DBGridFazendo,
-    DSRealizando, sError);
-  cTodo.CarregaTodosPorStatus('P', FDQueryPronto, DBGridPronto,
-    DSPronto, sError);
+  { Criamos instância de model }
+  oTodo := TTodo.Create;
+
+  { Validação de qual DBGrid está vindo o Drag }
+  try
+    try
+      case TDBCtrlGrid(Source).Tag of
+        1:
+          begin
+            { A fazer }
+            oTodo.ID := StrToInt(DBTextCodA.Caption);
+            oTodo.Status := 'A';
+            cTodo.UpdateStatusDragDrop(oTodo, sError);
+          end;
+        2:
+          begin
+            { Realizando }
+            oTodo.ID := StrToInt(DBTextCodR.Caption);
+            oTodo.Status := 'A';
+            cTodo.UpdateStatusDragDrop(oTodo, sError);
+          end;
+        3:
+          begin
+            { Pronto }
+            oTodo.ID := StrToInt(DBTextCodP.Caption);
+            oTodo.Status := 'A';
+            cTodo.UpdateStatusDragDrop(oTodo, sError);
+          end;
+      end;
+    except
+      on E: Exception do
+      begin
+        ShowMessage(E.message + sError);
+      end;
+    end;
+  finally
+    oTodo.Free;
+    AtualizarDadosTDBCtrlGrid;
+  end;
+end;
+
+procedure TfrmTodo.DBGridFazendoDragDrop(Sender, Source: TObject;
+  X, Y: Integer);
+var
+  oTodo: TTodo;
+  cTodo: TTodosController;
+  sError: String;
+begin
+  { Criamos instância de model }
+  oTodo := TTodo.Create;
+
+  { Validação de qual DBGrid está vindo o Drag }
+  try
+    try
+      case TDBCtrlGrid(Source).Tag of
+        1:
+          begin
+            { A fazer }
+            oTodo.ID := StrToInt(DBTextCodA.Caption);
+            oTodo.Status := 'R';
+            cTodo.UpdateStatusDragDrop(oTodo, sError);
+          end;
+        2:
+          begin
+            { Realizando }
+            oTodo.ID := StrToInt(DBTextCodR.Caption);
+            oTodo.Status := 'R';
+            cTodo.UpdateStatusDragDrop(oTodo, sError);
+          end;
+        3:
+          begin
+            { Pronto }
+            oTodo.ID := StrToInt(DBTextCodP.Caption);
+            oTodo.Status := 'R';
+            cTodo.UpdateStatusDragDrop(oTodo, sError);
+          end;
+      end;
+    except
+      on E: Exception do
+      begin
+        ShowMessage(E.message + sError);
+      end;
+    end;
+  finally
+    oTodo.Free;
+    AtualizarDadosTDBCtrlGrid;
+  end;
+end;
+
+procedure TfrmTodo.DBGridProntoDragDrop(Sender, Source: TObject; X, Y: Integer);
+var
+  oTodo: TTodo;
+  cTodo: TTodosController;
+  sError: String;
+begin
+  { Criamos instância de model }
+  oTodo := TTodo.Create;
+
+  { Validação de qual DBGrid está vindo o Drag }
+  try
+    try
+      case TDBCtrlGrid(Source).Tag of
+        1:
+          begin
+            { A fazer }
+            oTodo.ID := StrToInt(DBTextCodA.Caption);
+            oTodo.Status := 'P';
+            cTodo.UpdateStatusDragDrop(oTodo, sError);
+          end;
+        2:
+          begin
+            { Realizando }
+            oTodo.ID := StrToInt(DBTextCodR.Caption);
+            oTodo.Status := 'P';
+            cTodo.UpdateStatusDragDrop(oTodo, sError);
+          end;
+        3:
+          begin
+            { Pronto }
+            oTodo.ID := StrToInt(DBTextCodP.Caption);
+            oTodo.Status := 'P';
+            cTodo.UpdateStatusDragDrop(oTodo, sError);
+          end;
+      end;
+    except
+      on E: Exception do
+      begin
+        ShowMessage(E.message + sError);
+      end;
+    end;
+  finally
+    oTodo.Free;
+    AtualizarDadosTDBCtrlGrid;
+  end;
+end;
+
+procedure TfrmTodo.DBGridProntoDragOver(Sender, Source: TObject; X, Y: Integer;
+  State: TDragState; var Accept: Boolean);
+begin
+  Accept := Sender is (TDBCtrlGrid);
+end;
+
+procedure TfrmTodo.FormShow(Sender: TObject);
+begin
+  AtualizarDadosTDBCtrlGrid;
 end;
 
 end.

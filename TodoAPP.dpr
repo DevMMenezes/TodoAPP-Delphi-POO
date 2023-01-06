@@ -13,7 +13,9 @@ uses
   views.config in 'scr\views\views.config.pas' {frmConfig},
   views.criar.usuario in 'scr\views\views.criar.usuario.pas' {frmCriarUsuarios},
   models.todo in 'scr\models\models.todo.pas',
-  controllers.todo in 'scr\controllers\controllers.todo.pas';
+  controllers.todo in 'scr\controllers\controllers.todo.pas',
+  GBlur2 in 'scr\utils\GBlur2.pas',
+  ShadowBox in 'scr\utils\ShadowBox.pas';
 
 {$R *.res}
 
@@ -22,8 +24,7 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(Tdmconnection, dmconnection);
-  Application.CreateForm(TfrmConfig, frmConfig);
-  Application.CreateForm(TfrmCriarUsuarios, frmCriarUsuarios);
+  Application.CreateForm(TfrmMain, frmMain);
   Application.Run;
 
 end.

@@ -7,7 +7,8 @@ uses
   Messages,
   Controls,
   Classes,
-  SysUtils, Vcl.Forms;
+  SysUtils,
+  Vcl.DBCGrids, Vcl.Forms;
 
 type
   TUtils = class
@@ -17,6 +18,8 @@ type
   end;
 
 procedure ArredondarCantos(Control: TWinControl);
+procedure ArredondarCantos5(Control: TWinControl);
+procedure ArredondarCantosCircular(Control: TWinControl);
 procedure CriarFormularioShowModal(T: TFormClass; F: TForm; iTag: Integer);
 procedure CriarFormularioShow(T: TFormClass; F: TForm; iTag: Integer);
 procedure CriarFormulario(T: TFormClass; F: TForm);
@@ -24,6 +27,39 @@ procedure CriarFormulario(T: TFormClass; F: TForm);
 implementation
 
 { TUtils }
+procedure ArredondarCantosCircular(Control: TWinControl);
+var
+  R: TRect;
+  Rgn: HRGN;
+begin
+  with Control do
+  begin
+  R := ClientRect;
+    Rgn := CreateRoundRectRgn(R.Left, R.Top, R.Right, R.Bottom, 50, 50);
+    Perform(EM_GETRECT, 0, lParam(@R));
+    InflateRect(R, -4, -4);
+    Perform(EM_SETRECTNP, 0, lParam(@R));
+    SetWindowRgn(Handle, Rgn, True);
+    Invalidate;
+  end;
+end;
+
+procedure ArredondarCantos5(Control: TWinControl);
+var
+  R: TRect;
+  Rgn: HRGN;
+begin
+  with Control do
+  begin
+    R := ClientRect;
+    Rgn := CreateRoundRectRgn(R.Left, R.Top, R.Right, R.Bottom, 5, 5);
+    Perform(EM_GETRECT, 0, lParam(@R));
+    InflateRect(R, -4, -4);
+    Perform(EM_SETRECTNP, 0, lParam(@R));
+    SetWindowRgn(Handle, Rgn, True);
+    Invalidate;
+  end;
+end;
 
 procedure ArredondarCantos(Control: TWinControl);
 var

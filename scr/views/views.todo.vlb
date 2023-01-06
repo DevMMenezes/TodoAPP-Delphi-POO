@@ -1,7 +1,4 @@
-﻿[DBGridAFazer]
-Coordinates=428,190,84,33
-
-[DSPronto]
+﻿[DSPronto]
 Coordinates=117,1,61,33
 
 [DBGridFazendo]
@@ -9,10 +6,6 @@ Coordinates=243,190,92,33
 
 [FDQueryAFazer]
 Coordinates=10,10,92,87
-
-[DBTextCod]
-Coordinates=269,10,70,51
-Visible=True
 
 [FDQueryRealizando]
 Coordinates=449,122,112,51
@@ -23,12 +16,6 @@ Coordinates=533,1,102,33
 [DSRealizando]
 Coordinates=249,122,83,33
 
-[LblStatus]
-Coordinates=128,10,61,51
-
-[LblCod]
-Coordinates=258,122,49,51
-
 [FDQueryPronto]
 Coordinates=10,122,91,51
 
@@ -36,7 +23,8 @@ Coordinates=10,122,91,51
 Coordinates=249,1,62,33
 
 []
-Coordinates=386,122,46,51
+Coordinates=428,190,84,33
+Visible=True
 
 [DBGridPronto]
 Coordinates=79,190,74,33

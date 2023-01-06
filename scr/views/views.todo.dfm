@@ -1,9 +1,10 @@
 object frmTodo: TfrmTodo
   Left = 0
   Top = 0
+  BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
-  ClientHeight = 689
-  ClientWidth = 814
+  ClientHeight = 695
+  ClientWidth = 819
   Color = clWhite
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -15,222 +16,38 @@ object frmTodo: TfrmTodo
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
-  object DBGridAFazer: TDBCtrlGrid
-    Left = 8
-    Top = 71
-    Width = 257
-    Height = 610
-    Cursor = crHandPoint
-    AllowDelete = False
-    AllowInsert = False
-    Color = clWhite
-    DataSource = DSAFazer
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWhite
-    Font.Height = -11
-    Font.Name = 'Tahoma'
-    Font.Style = []
-    PanelBorder = gbNone
-    PanelHeight = 122
-    PanelWidth = 240
-    ParentColor = False
-    ParentFont = False
-    TabOrder = 0
-    RowCount = 5
-    ShowFocus = False
-    Touch.ParentTabletOptions = False
-    Touch.TabletOptions = []
-    object Shape3: TShape
-      Left = 0
-      Top = 0
-      Width = 240
-      Height = 122
-      Cursor = crHandPoint
-      Align = alClient
-      Brush.Color = clSilver
-      Pen.Mode = pmNotXor
-      Pen.Style = psClear
-      Pen.Width = 5
-      Shape = stRoundRect
-      ExplicitLeft = 72
-      ExplicitTop = 33
-      ExplicitWidth = 65
-      ExplicitHeight = 65
-    end
-    object LblCod: TLabel
-      Left = 13
-      Top = 14
-      Width = 69
-      Height = 18
-      Caption = 'Cod.Todo:'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -15
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentFont = False
-    end
-    object LblStatus: TLabel
-      Left = 136
-      Top = 95
-      Width = 89
-      Height = 18
-      Caption = 'Aguardando'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clRed
-      Font.Height = -15
-      Font.Name = 'Tahoma'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
-    object DBTextCod: TDBText
-      Left = 90
-      Top = 14
-      Width = 95
-      Height = 17
-      Cursor = crHandPoint
-      DataField = 'ID'
-      DataSource = DSAFazer
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -15
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentFont = False
-    end
-    object DBTextNome: TDBText
-      AlignWithMargins = True
-      Left = 13
-      Top = 37
-      Width = 212
-      Height = 52
-      Cursor = crHandPoint
-      DataField = 'DESCRICAO'
-      DataSource = DSAFazer
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -15
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentFont = False
-      WordWrap = True
-    end
-  end
-  object DBGridFazendo: TDBCtrlGrid
-    Left = 278
-    Top = 71
-    Width = 257
-    Height = 610
-    DataSource = DSRealizando
-    DragMode = dmAutomatic
-    PanelBorder = gbNone
-    PanelHeight = 122
-    PanelWidth = 240
-    TabOrder = 1
-    RowCount = 5
-    object Shape1: TShape
-      Left = 0
-      Top = 0
-      Width = 240
-      Height = 122
-      Cursor = crHandPoint
-      Align = alClient
-      Brush.Color = clSilver
-      Pen.Mode = pmNotXor
-      Pen.Style = psClear
-      Pen.Width = 5
-      Shape = stRoundRect
-      ExplicitLeft = 72
-      ExplicitTop = 33
-      ExplicitWidth = 65
-      ExplicitHeight = 65
-    end
-    object Label1: TLabel
-      Left = 13
-      Top = 14
-      Width = 69
-      Height = 18
-      Caption = 'Cod.Todo:'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -15
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentFont = False
-    end
-    object DBText1: TDBText
-      Left = 90
-      Top = 14
-      Width = 95
-      Height = 17
-      Cursor = crHandPoint
-      DataField = 'ID'
-      DataSource = DSRealizando
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -15
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentFont = False
-    end
-    object DBText2: TDBText
-      AlignWithMargins = True
-      Left = 13
-      Top = 37
-      Width = 212
-      Height = 52
-      Cursor = crHandPoint
-      DataField = 'DESCRICAO'
-      DataSource = DSRealizando
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -15
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentFont = False
-      WordWrap = True
-    end
-    object LblRealizando: TLabel
-      Left = 141
-      Top = 95
-      Width = 83
-      Height = 18
-      Caption = 'Realizando'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = 4227327
-      Font.Height = -15
-      Font.Name = 'Tahoma'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
+  object BtnAdd: TBitBtn
+    Left = 568
+    Top = 8
+    Width = 81
+    Height = 41
+    Caption = 'Add'
+    TabOrder = 3
+    Visible = False
+    OnClick = BtnAddClick
   end
   object DBGridPronto: TDBCtrlGrid
+    Tag = 3
     Left = 544
     Top = 71
     Width = 257
     Height = 610
+    Cursor = crDrag
+    AllowDelete = False
+    AllowInsert = False
     DataSource = DSPronto
+    DragCursor = crMultiDrag
+    DragMode = dmAutomatic
     PanelBorder = gbNone
     PanelHeight = 122
     PanelWidth = 240
     TabOrder = 2
     RowCount = 5
-    object Shape2: TShape
-      Left = 0
-      Top = 0
-      Width = 240
-      Height = 122
-      Cursor = crHandPoint
-      Align = alClient
-      Brush.Color = clSilver
-      Pen.Mode = pmNotXor
-      Pen.Style = psClear
-      Pen.Width = 5
-      Shape = stRoundRect
-      ExplicitLeft = 24
-      ExplicitTop = -8
-    end
-    object DBText3: TDBText
+    SelectedColor = 14803425
+    ShowFocus = False
+    OnDragDrop = DBGridProntoDragDrop
+    OnDragOver = DBGridProntoDragOver
+    object DBTextDescP: TDBText
       AlignWithMargins = True
       Left = 13
       Top = 37
@@ -273,7 +90,7 @@ object frmTodo: TfrmTodo
       Font.Style = []
       ParentFont = False
     end
-    object DBText4: TDBText
+    object DBTextCodP: TDBText
       Left = 90
       Top = 14
       Width = 95
@@ -288,34 +105,228 @@ object frmTodo: TfrmTodo
       Font.Style = []
       ParentFont = False
     end
+    object Panel1: TPanel
+      Left = 1
+      Top = 117
+      Width = 239
+      Height = 5
+      BevelOuter = bvNone
+      Color = 5481984
+      ParentBackground = False
+      TabOrder = 0
+    end
   end
-  object BtnAdd: TBitBtn
-    Left = 88
-    Top = 24
-    Width = 81
-    Height = 41
-    Caption = 'Add'
-    TabOrder = 3
-    OnClick = BtnAddClick
+  object DBGridFazendo: TDBCtrlGrid
+    Tag = 2
+    Left = 282
+    Top = 72
+    Width = 257
+    Height = 615
+    Cursor = crDrag
+    AllowDelete = False
+    AllowInsert = False
+    DataSource = DSRealizando
+    DragCursor = crMultiDrag
+    DragMode = dmAutomatic
+    PanelBorder = gbNone
+    PanelHeight = 123
+    PanelWidth = 240
+    TabOrder = 1
+    RowCount = 5
+    SelectedColor = 14803425
+    ShowFocus = False
+    OnDragDrop = DBGridFazendoDragDrop
+    OnDragOver = DBGridProntoDragOver
+    object Label1: TLabel
+      Left = 13
+      Top = 14
+      Width = 69
+      Height = 18
+      Caption = 'Cod.Todo:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -15
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object DBTextCodR: TDBText
+      Left = 90
+      Top = 14
+      Width = 95
+      Height = 17
+      Cursor = crHandPoint
+      DataField = 'ID'
+      DataSource = DSRealizando
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -15
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object DBTextDescR: TDBText
+      AlignWithMargins = True
+      Left = 13
+      Top = 37
+      Width = 212
+      Height = 52
+      Cursor = crHandPoint
+      DataField = 'DESCRICAO'
+      DataSource = DSRealizando
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -15
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      WordWrap = True
+    end
+    object LblRealizando: TLabel
+      Left = 141
+      Top = 95
+      Width = 83
+      Height = 18
+      Caption = 'Realizando'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4227327
+      Font.Height = -15
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object pnStatusR: TPanel
+      Left = 0
+      Top = 117
+      Width = 239
+      Height = 5
+      BevelOuter = bvNone
+      Color = 33023
+      ParentBackground = False
+      TabOrder = 0
+    end
+  end
+  object DBGridAFazer: TDBCtrlGrid
+    Tag = 1
+    Left = 21
+    Top = 71
+    Width = 257
+    Height = 610
+    Cursor = crDrag
+    Margins.Left = 0
+    Margins.Top = 0
+    Margins.Right = 0
+    AllowDelete = False
+    AllowInsert = False
+    Color = clWhite
+    DataSource = DSAFazer
+    DragCursor = crMultiDrag
+    DragMode = dmAutomatic
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWhite
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    PanelBorder = gbNone
+    PanelHeight = 122
+    PanelWidth = 240
+    ParentColor = False
+    ParentFont = False
+    TabOrder = 0
+    RowCount = 5
+    SelectedColor = 14803425
+    ShowFocus = False
+    Touch.ParentTabletOptions = False
+    Touch.TabletOptions = []
+    OnDragDrop = DBGridAFazerDragDrop
+    OnDragOver = DBGridProntoDragOver
+    object DBTextDescA: TDBText
+      AlignWithMargins = True
+      Left = 18
+      Top = 43
+      Width = 212
+      Height = 52
+      Cursor = crHandPoint
+      DataField = 'DESCRICAO'
+      DataSource = DSAFazer
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -15
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      WordWrap = True
+    end
+    object LblCod: TLabel
+      Left = 18
+      Top = 20
+      Width = 69
+      Height = 18
+      Caption = 'Cod.Todo:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -15
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object LblStatus: TLabel
+      Left = 133
+      Top = 93
+      Width = 89
+      Height = 18
+      Caption = 'Aguardando'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clRed
+      Font.Height = -15
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object DBTextCodA: TDBText
+      Left = 95
+      Top = 20
+      Width = 95
+      Height = 17
+      Cursor = crHandPoint
+      DataField = 'ID'
+      DataSource = DSAFazer
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -15
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object pnStatusA: TPanel
+      Left = 1
+      Top = 117
+      Width = 239
+      Height = 5
+      BevelOuter = bvNone
+      Color = clRed
+      ParentBackground = False
+      TabOrder = 0
+    end
   end
   object DSAFazer: TDataSource
     DataSet = FDQueryAFazer
-    Left = 120
-    Top = 216
+    Left = 24
+    Top = 248
   end
   object DSRealizando: TDataSource
     DataSet = FDQueryRealizando
-    Left = 384
-    Top = 208
+    Left = 296
+    Top = 248
   end
   object DSPronto: TDataSource
     DataSet = FDQueryPronto
-    Left = 664
-    Top = 216
+    Left = 552
+    Top = 248
   end
   object FDQueryAFazer: TFDQuery
-    Left = 120
-    Top = 272
+    Left = 24
+    Top = 200
     object FDQueryAFazerID: TIntegerField
       FieldName = 'ID'
     end
@@ -333,11 +344,16 @@ object frmTodo: TfrmTodo
     end
   end
   object FDQueryRealizando: TFDQuery
-    Left = 384
-    Top = 160
+    Left = 288
+    Top = 200
   end
   object FDQueryPronto: TFDQuery
-    Left = 664
-    Top = 168
+    Left = 552
+    Top = 200
+  end
+  object ApplicationEvents: TApplicationEvents
+    OnMessage = ApplicationEventsMessage
+    Left = 388
+    Top = 592
   end
 end

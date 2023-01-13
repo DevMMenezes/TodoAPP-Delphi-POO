@@ -10,9 +10,6 @@ Coordinates=10,10,92,87
 [FDQueryRealizando]
 Coordinates=449,122,112,51
 
-[FDQueryAFazerID]
-Coordinates=533,1,102,33
-
 [DSRealizando]
 Coordinates=249,122,83,33
 
@@ -23,7 +20,7 @@ Coordinates=10,122,91,51
 Coordinates=249,1,62,33
 
 []
-Coordinates=428,190,84,33
+Coordinates=533,1,102,33
 Visible=True
 
 [DBGridPronto]

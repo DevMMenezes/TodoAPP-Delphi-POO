@@ -1,6 +1,9 @@
 program TodoAPP;
 
 uses
+  {$IFDEF DEBUG}
+  FastMM4,
+  {$ENDIF }
   Vcl.Forms,
   views.login in 'scr\views\views.login.pas' {frmLogin},
   Utils in 'scr\utils\Utils.pas',
@@ -15,16 +18,17 @@ uses
   models.todo in 'scr\models\models.todo.pas',
   controllers.todo in 'scr\controllers\controllers.todo.pas',
   GBlur2 in 'scr\utils\GBlur2.pas',
-  ShadowBox in 'scr\utils\ShadowBox.pas';
+  ShadowBox in 'scr\utils\ShadowBox.pas',
+  views.criar.todo in 'scr\views\views.criar.todo.pas' {FrmCriarTodo},
+  views.mensagem in 'scr\views\views.mensagem.pas' {FrmMensagem};
 
 {$R *.res}
 
+{ Utilizando o FastMM4, não precisa informar o ReportMemoryLeaksOnShutdown }
 begin
-  ReportMemoryLeaksOnShutdown := True;
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(Tdmconnection, dmconnection);
-  Application.CreateForm(TfrmMain, frmMain);
   Application.Run;
 
 end.

@@ -8,7 +8,7 @@ uses
   Controls,
   Classes,
   SysUtils,
-  Vcl.DBCGrids, Vcl.Forms;
+  Vcl.DBCGrids, Vcl.Forms, views.mensagem;
 
 type
   TUtils = class
@@ -23,10 +23,26 @@ procedure ArredondarCantosCircular(Control: TWinControl);
 procedure CriarFormularioShowModal(T: TFormClass; F: TForm; iTag: Integer);
 procedure CriarFormularioShow(T: TFormClass; F: TForm; iTag: Integer);
 procedure CriarFormulario(T: TFormClass; F: TForm);
+procedure mensagem(sMensagem: String);
+function CalculaPorcentagem(Total: Integer; Quant: Integer): String;
 
 implementation
 
 { TUtils }
+
+function CalculaPorcentagem(Total: Integer; Quant: Integer): String;
+begin
+  Result := CurrToStr((Quant + Total)) + ' %';
+end;
+
+procedure mensagem(sMensagem: String);
+begin
+  Application.CreateForm(TFrmMensagem, FrmMensagem);
+  ArredondarCantos(FrmMensagem);
+  FrmMensagem.pnMensagem.Caption := sMensagem;
+  FrmMensagem.ShowModal;
+end;
+
 procedure ArredondarCantosCircular(Control: TWinControl);
 var
   R: TRect;
@@ -34,7 +50,7 @@ var
 begin
   with Control do
   begin
-  R := ClientRect;
+    R := ClientRect;
     Rgn := CreateRoundRectRgn(R.Left, R.Top, R.Right, R.Bottom, 50, 50);
     Perform(EM_GETRECT, 0, lParam(@R));
     InflateRect(R, -4, -4);

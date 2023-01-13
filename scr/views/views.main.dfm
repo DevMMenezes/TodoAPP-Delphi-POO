@@ -5,7 +5,7 @@ object frmMain: TfrmMain
   BorderStyle = bsNone
   ClientHeight = 829
   ClientWidth = 1206
-  Color = clBtnFace
+  Color = clWhite
   UseDockManager = True
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -34,7 +34,6 @@ object frmMain: TfrmMain
     ParentBackground = False
     ParentFont = False
     TabOrder = 0
-    ExplicitLeft = -8
     object LblTodoTitle: TLabel
       Left = 87
       Top = 31
@@ -199,6 +198,8 @@ object frmMain: TfrmMain
           2B8CB35E781396355C142099D1B2DE8065EBC18F1CB04DC2A3656FD1A0790095
           D482EE0A8083385A0BC01F3E7E8041C578F6EB0000000049454E44AE426082}
         OnClick = btnCloseClick
+        OnMouseEnter = btnCloseMouseEnter
+        OnMouseLeave = btnCloseMouseLeave
         ExplicitLeft = 8
         ExplicitWidth = 49
         ExplicitHeight = 49
@@ -7494,6 +7495,7 @@ object frmMain: TfrmMain
           5C191C87C081716C18671058E4183DF8C7E9DF9CE507FD3CFF0DC71257D17059
           D5830000000049454E44AE426082}
         OnMouseEnter = btnConfigsMouseEnter
+        OnMouseLeave = btnConfigsMouseLeave
         ExplicitTop = -6
       end
     end
@@ -7507,8 +7509,8 @@ object frmMain: TfrmMain
     TabOrder = 1
     Visible = False
     object btnConfigsUsers: TPanel
-      Left = 5
-      Top = 6
+      Left = 6
+      Top = 7
       Width = 185
       Height = 34
       Cursor = crHandPoint
@@ -7528,5 +7530,200 @@ object frmMain: TfrmMain
       OnMouseLeave = btnConfigsUsersMouseLeave
       OnMouseUp = btnConfigsUsersMouseUp
     end
+  end
+  object PG: TPageControl
+    Left = 0
+    Top = 129
+    Width = 1206
+    Height = 700
+    ActivePage = TabSDashboard
+    Align = alClient
+    TabOrder = 2
+    object TabSDashboard: TTabSheet
+      Caption = 'Dashboard'
+      TabVisible = False
+      object ImgLoading: TImage
+        Left = 468
+        Top = 184
+        Width = 277
+        Height = 249
+        Center = True
+        Stretch = True
+        Transparent = True
+      end
+      object GraficoProgresso: TChart
+        Left = 200
+        Top = 88
+        Width = 920
+        Height = 479
+        Cursor = crHandPoint
+        BackWall.Pen.Visible = False
+        BorderRound = 42
+        BottomWall.Brush.Gradient.EndColor = clSilver
+        BottomWall.Brush.Gradient.StartColor = clGray
+        BottomWall.Brush.Gradient.Visible = True
+        BottomWall.Pen.Color = clGray
+        BottomWall.Size = 4
+        Gradient.Colors = <
+          item
+            Color = clWhite
+          end
+          item
+            Color = clGreen
+            Transparency = 74
+          end
+          item
+            Color = clGreen
+          end
+          item
+            Color = clGreen
+          end
+          item
+            Color = clGreen
+          end
+          item
+            Color = clGreen
+          end
+          item
+            Color = clGreen
+          end
+          item
+            Color = clGreen
+          end
+          item
+            Color = clGreen
+            Offset = 0.023952095808383240
+          end
+          item
+            Color = clGreen
+            Offset = 0.071856287425149700
+          end
+          item
+            Color = clGreen
+            Offset = 0.071856287425149700
+          end
+          item
+            Color = clGreen
+            Offset = 0.071856287425149700
+          end
+          item
+            Color = clWhite
+            Offset = 0.071856287425149700
+          end
+          item
+            Color = clGreen
+            Offset = 0.110778443113772500
+          end
+          item
+            Color = clGreen
+            Offset = 0.203592814371257500
+          end
+          item
+            Color = clGreen
+            Offset = 0.269461077844311400
+          end
+          item
+            Color = clGreen
+            Offset = 1.000000000000000000
+          end
+          item
+            Color = clWhite
+            Offset = 1.000000000000000000
+          end>
+        Gradient.Direction = gdFromTopLeft
+        Gradient.EndColor = clWhite
+        Gradient.MidColor = clGreen
+        Gradient.SubGradient.Transparency = 90
+        LeftWall.Brush.Gradient.EndColor = clSilver
+        LeftWall.Brush.Gradient.StartColor = clGray
+        LeftWall.Brush.Gradient.Visible = True
+        LeftWall.Color = clWhite
+        LeftWall.Pen.Color = clGray
+        LeftWall.Size = 4
+        Legend.DividingLines.Color = 603979776
+        Legend.DividingLines.Width = 37
+        MarginLeft = 4
+        MarginRight = 4
+        Title.Cursor = crHandPoint
+        Title.Font.Color = clBlack
+        Title.Font.Height = -21
+        Title.Font.Style = [fsBold]
+        Title.Frame.SmallDots = True
+        Title.Frame.Visible = False
+        Title.Text.Strings = (
+          'Progresso Mensal')
+        Title.TextAlignment = taLeftJustify
+        BottomAxis.Grid.Color = 14540253
+        BottomAxis.LabelsFormat.Font.Color = clGray
+        BottomAxis.LabelsFormat.Font.Height = -9
+        BottomAxis.LabelStyle = talValue
+        Frame.Visible = False
+        LeftAxis.Grid.Color = 14540253
+        LeftAxis.LabelsFormat.Font.Color = clGray
+        LeftAxis.LabelsFormat.Font.Height = -9
+        LeftAxis.LabelStyle = talValue
+        View3D = False
+        View3DOptions.Elevation = 315
+        View3DOptions.Orthogonal = False
+        View3DOptions.Perspective = 0
+        View3DOptions.Rotation = 360
+        Zoom.Animated = True
+        Zoom.UpLeftZooms = True
+        BevelOuter = bvNone
+        BevelWidth = 2
+        Color = 16382457
+        TabOrder = 0
+        DefaultCanvas = 'TGDIPlusCanvas'
+        PrintMargins = (
+          15
+          25
+          15
+          25)
+        ColorPaletteIndex = 7
+        object Series1: TPieSeries
+          SeriesColor = 8454143
+          XValues.Order = loAscending
+          YValues.Name = 'Pie'
+          YValues.Order = loNone
+          Frame.InnerBrush.BackColor = clRed
+          Frame.InnerBrush.Gradient.EndColor = clGray
+          Frame.InnerBrush.Gradient.MidColor = clWhite
+          Frame.InnerBrush.Gradient.StartColor = 4210752
+          Frame.InnerBrush.Gradient.Visible = True
+          Frame.MiddleBrush.BackColor = clYellow
+          Frame.MiddleBrush.Gradient.EndColor = 8553090
+          Frame.MiddleBrush.Gradient.MidColor = clWhite
+          Frame.MiddleBrush.Gradient.StartColor = clGray
+          Frame.MiddleBrush.Gradient.Visible = True
+          Frame.OuterBrush.BackColor = clGreen
+          Frame.OuterBrush.Gradient.EndColor = 4210752
+          Frame.OuterBrush.Gradient.MidColor = clWhite
+          Frame.OuterBrush.Gradient.StartColor = clSilver
+          Frame.OuterBrush.Gradient.Visible = True
+          Frame.Width = 4
+          Shadow.Transparency = 53
+          OtherSlice.Legend.Visible = False
+          PiePen.Color = 1090519040
+          PiePen.SmallDots = True
+          Data = {
+            0603000000000000000000F03FFF000000FF0A000000416775617264616E646F
+            000000000000F03FFF804000FF0A0000005265616C697A616E646F0000000000
+            00F03F00800000FF0600000050726F6E746F}
+          Detail = {0000000000}
+        end
+      end
+    end
+    object TabSTodos: TTabSheet
+      Caption = 'Todos'
+      ImageIndex = 1
+      TabVisible = False
+    end
+  end
+  object TeeGDIPlus: TTeeGDIPlus
+    Active = True
+    AntiAliasText = gpfBest
+    TeePanel = GraficoProgresso
+    Left = 72
+    Top = 176
   end
 end

@@ -2,10 +2,12 @@ object frmTodo: TfrmTodo
   Left = 0
   Top = 0
   BorderIcons = [biSystemMenu, biMinimize]
-  BorderStyle = bsSingle
-  ClientHeight = 695
-  ClientWidth = 819
+  BorderStyle = bsNone
+  ClientHeight = 690
+  ClientWidth = 1198
   Color = clWhite
+  TransparentColor = True
+  TransparentColorValue = 16744703
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -16,20 +18,10 @@ object frmTodo: TfrmTodo
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
-  object BtnAdd: TBitBtn
-    Left = 568
-    Top = 8
-    Width = 81
-    Height = 41
-    Caption = 'Add'
-    TabOrder = 3
-    Visible = False
-    OnClick = BtnAddClick
-  end
   object DBGridPronto: TDBCtrlGrid
     Tag = 3
-    Left = 544
-    Top = 71
+    Left = 776
+    Top = 72
     Width = 257
     Height = 610
     Cursor = crDrag
@@ -76,6 +68,7 @@ object frmTodo: TfrmTodo
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
       ParentFont = False
+      Visible = False
     end
     object Label3: TLabel
       Left = 13
@@ -105,7 +98,7 @@ object frmTodo: TfrmTodo
       Font.Style = []
       ParentFont = False
     end
-    object Panel1: TPanel
+    object pnStatusP: TPanel
       Left = 1
       Top = 117
       Width = 239
@@ -118,10 +111,10 @@ object frmTodo: TfrmTodo
   end
   object DBGridFazendo: TDBCtrlGrid
     Tag = 2
-    Left = 282
-    Top = 72
+    Left = 502
+    Top = 75
     Width = 257
-    Height = 615
+    Height = 605
     Cursor = crDrag
     AllowDelete = False
     AllowInsert = False
@@ -129,7 +122,7 @@ object frmTodo: TfrmTodo
     DragCursor = crMultiDrag
     DragMode = dmAutomatic
     PanelBorder = gbNone
-    PanelHeight = 123
+    PanelHeight = 121
     PanelWidth = 240
     TabOrder = 1
     RowCount = 5
@@ -194,6 +187,7 @@ object frmTodo: TfrmTodo
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
       ParentFont = False
+      Visible = False
     end
     object pnStatusR: TPanel
       Left = 0
@@ -208,8 +202,8 @@ object frmTodo: TfrmTodo
   end
   object DBGridAFazer: TDBCtrlGrid
     Tag = 1
-    Left = 21
-    Top = 71
+    Left = 226
+    Top = 72
     Width = 257
     Height = 610
     Cursor = crDrag
@@ -282,6 +276,7 @@ object frmTodo: TfrmTodo
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
       ParentFont = False
+      Visible = False
     end
     object DBTextCodA: TDBText
       Left = 95
@@ -309,47 +304,102 @@ object frmTodo: TfrmTodo
       TabOrder = 0
     end
   end
+  object pnAguardando: TPanel
+    Left = 296
+    Top = 24
+    Width = 113
+    Height = 33
+    BevelOuter = bvNone
+    Caption = 'Aguardando'
+    Color = clRed
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWhite
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentBackground = False
+    ParentFont = False
+    TabOrder = 3
+  end
+  object pnRealizando: TPanel
+    Left = 566
+    Top = 24
+    Width = 113
+    Height = 33
+    BevelOuter = bvNone
+    Caption = 'Realizando'
+    Color = 4227327
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWhite
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentBackground = False
+    ParentFont = False
+    TabOrder = 4
+  end
+  object pnPronto: TPanel
+    Left = 848
+    Top = 24
+    Width = 113
+    Height = 33
+    BevelOuter = bvNone
+    Caption = 'Pronto'
+    Color = 5481984
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWhite
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentBackground = False
+    ParentFont = False
+    TabOrder = 5
+  end
+  object pnAdicionar: TPanel
+    Left = 1064
+    Top = 23
+    Width = 113
+    Height = 33
+    Cursor = crHandPoint
+    BevelOuter = bvNone
+    Caption = 'Adicionar'
+    Color = 4140309
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWhite
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentBackground = False
+    ParentFont = False
+    TabOrder = 6
+    OnClick = pnAdicionarClick
+  end
   object DSAFazer: TDataSource
     DataSet = FDQueryAFazer
-    Left = 24
-    Top = 248
+    Left = 336
+    Top = 288
   end
   object DSRealizando: TDataSource
     DataSet = FDQueryRealizando
-    Left = 296
-    Top = 248
+    Left = 608
+    Top = 288
   end
   object DSPronto: TDataSource
     DataSet = FDQueryPronto
-    Left = 552
-    Top = 248
+    Left = 864
+    Top = 288
   end
   object FDQueryAFazer: TFDQuery
-    Left = 24
-    Top = 200
-    object FDQueryAFazerID: TIntegerField
-      FieldName = 'ID'
-    end
-    object FDQueryAFazerTITULO: TStringField
-      FieldName = 'TITULO'
-      Size = 50
-    end
-    object FDQueryAFazerDESCRICAO: TStringField
-      FieldName = 'DESCRICAO'
-      Size = 1024
-    end
-    object FDQueryAFazerSTATUS: TStringField
-      FieldName = 'STATUS'
-      Size = 1
-    end
+    Left = 336
+    Top = 240
   end
   object FDQueryRealizando: TFDQuery
-    Left = 288
-    Top = 200
+    Left = 600
+    Top = 240
   end
   object FDQueryPronto: TFDQuery
-    Left = 552
-    Top = 200
+    Left = 864
+    Top = 240
   end
   object ApplicationEvents: TApplicationEvents
     OnMessage = ApplicationEventsMessage

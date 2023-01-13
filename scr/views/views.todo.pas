@@ -45,11 +45,6 @@ type
     FDQueryAFazer: TFDQuery;
     FDQueryRealizando: TFDQuery;
     FDQueryPronto: TFDQuery;
-    FDQueryAFazerID: TIntegerField;
-    BtnAdd: TBitBtn;
-    FDQueryAFazerTITULO: TStringField;
-    FDQueryAFazerDESCRICAO: TStringField;
-    FDQueryAFazerSTATUS: TStringField;
     Label1: TLabel;
     DBTextCodR: TDBText;
     DBTextDescR: TDBText;
@@ -65,9 +60,12 @@ type
     LblStatus: TLabel;
     ApplicationEvents: TApplicationEvents;
     pnStatusR: TPanel;
-    Panel1: TPanel;
+    pnStatusP: TPanel;
     pnStatusA: TPanel;
-    procedure BtnAddClick(Sender: TObject);
+    pnAguardando: TPanel;
+    pnRealizando: TPanel;
+    pnPronto: TPanel;
+    pnAdicionar: TPanel;
     procedure FormShow(Sender: TObject);
     procedure ApplicationEventsMessage(var Msg: tagMSG; var Handled: Boolean);
     procedure DBGridProntoDragOver(Sender, Source: TObject; X, Y: Integer;
@@ -76,6 +74,7 @@ type
     procedure AtualizarDadosTDBCtrlGrid;
     procedure DBGridFazendoDragDrop(Sender, Source: TObject; X, Y: Integer);
     procedure DBGridProntoDragDrop(Sender, Source: TObject; X, Y: Integer);
+    procedure pnAdicionarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -89,7 +88,7 @@ implementation
 
 {$R *.dfm}
 
-uses controllers.usuario, Utils, dao.dmconnection;
+uses controllers.usuario, Utils, dao.dmconnection, views.criar.todo;
 
 procedure TfrmTodo.ApplicationEventsMessage(var Msg: tagMSG;
   var Handled: Boolean);
@@ -114,34 +113,20 @@ var
   cTodo: TTodosController;
   sError: String;
 begin
-  { Carrega todos os DBGrids Atualizados }
-  cTodo.CarregaTodosPorStatus('A', FDQueryAFazer, DBGridAFazer,
-    DSAFazer, sError);
-  cTodo.CarregaTodosPorStatus('R', FDQueryRealizando, DBGridFazendo,
-    DSRealizando, sError);
-  cTodo.CarregaTodosPorStatus('P', FDQueryPronto, DBGridPronto,
-    DSPronto, sError);
-end;
-
-procedure TfrmTodo.BtnAddClick(Sender: TObject);
-var
-  oTodo: TTodo;
-  cTodo: TTodosController;
-  sError: String;
-begin
-  oTodo := TTodo.Create;
+  cTodo := TTodosController.Create;
   try
-    try
-
-    except
-      on E: Exception do
-      begin
-        ShowMessage(E.message + sError);
-      end;
-    end;
+    { Carrega todos os DBGrids Atualizados }
+    cTodo.CarregaTodosPorStatus('A', FDQueryAFazer, DBGridAFazer,
+      DSAFazer, sError);
+    cTodo.CarregaTodosPorStatus('R', FDQueryRealizando, DBGridFazendo,
+      DSRealizando, sError);
+    cTodo.CarregaTodosPorStatus('P', FDQueryPronto, DBGridPronto,
+      DSPronto, sError);
   finally
+    cTodo.Free;
   end;
 end;
+
 
 procedure TfrmTodo.DBGridAFazerDragDrop(Sender, Source: TObject; X, Y: Integer);
 var
@@ -149,8 +134,9 @@ var
   cTodo: TTodosController;
   sError: String;
 begin
-  { Criamos instância de model }
+  { Criamos instância de model e controller }
   oTodo := TTodo.Create;
+  cTodo := TTodosController.Create;
 
   { Validação de qual DBGrid está vindo o Drag }
   try
@@ -185,7 +171,9 @@ begin
       end;
     end;
   finally
+    { Liberando as instâncias da memória e atualizando os DBgrids }
     oTodo.Free;
+    cTodo.Free;
     AtualizarDadosTDBCtrlGrid;
   end;
 end;
@@ -197,8 +185,9 @@ var
   cTodo: TTodosController;
   sError: String;
 begin
-  { Criamos instância de model }
+  { Criamos instância de model e controller }
   oTodo := TTodo.Create;
+  cTodo := TTodosController.Create;
 
   { Validação de qual DBGrid está vindo o Drag }
   try
@@ -233,7 +222,9 @@ begin
       end;
     end;
   finally
+    { Liberando as instâncias da memória e atualizando os DBgrids }
     oTodo.Free;
+    cTodo.Free;
     AtualizarDadosTDBCtrlGrid;
   end;
 end;
@@ -244,8 +235,9 @@ var
   cTodo: TTodosController;
   sError: String;
 begin
-  { Criamos instância de model }
+  { Criamos instância de model e controller }
   oTodo := TTodo.Create;
+  cTodo := TTodosController.Create;
 
   { Validação de qual DBGrid está vindo o Drag }
   try
@@ -280,7 +272,9 @@ begin
       end;
     end;
   finally
+    { Liberando as instâncias da memória e atualizando os DBgrids }
     oTodo.Free;
+    cTodo.Free;
     AtualizarDadosTDBCtrlGrid;
   end;
 end;
@@ -293,7 +287,21 @@ end;
 
 procedure TfrmTodo.FormShow(Sender: TObject);
 begin
+  { Carrega os PNs de Legendas Arredondados }
+  ArredondarCantos(pnAguardando);
+  ArredondarCantos(pnRealizando);
+  ArredondarCantos(pnPronto);
+  ArredondarCantos(pnAdicionar);
+
+  { Atualiza os DBGrids }
   AtualizarDadosTDBCtrlGrid;
+end;
+
+procedure TfrmTodo.pnAdicionarClick(Sender: TObject);
+begin
+  Application.CreateForm(TFrmCriarTodo, FrmCriarTodo);
+  FrmCriarTodo.Tag := 0;
+  FrmCriarTodo.ShowModal;
 end;
 
 end.

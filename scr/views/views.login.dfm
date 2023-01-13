@@ -14,6 +14,7 @@ object frmLogin: TfrmLogin
   KeyPreview = True
   OldCreateOrder = False
   Position = poScreenCenter
+  OnClose = FormClose
   OnKeyDown = FormKeyDown
   OnShow = FormShow
   PixelsPerInch = 96
@@ -28,8 +29,6 @@ object frmLogin: TfrmLogin
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = 112
-    ExplicitTop = -56
     object LblTodoTitle: TLabel
       Left = 216
       Top = 75
@@ -75,7 +74,7 @@ object frmLogin: TfrmLogin
       ParentColor = False
       ParentFont = False
     end
-    object Image1: TImage
+    object ImgLogo: TImage
       Left = 129
       Top = 64
       Width = 81
@@ -156,6 +155,7 @@ object frmLogin: TfrmLogin
       Font.Style = []
       ParentFont = False
       TabOrder = 0
+      Text = 'q'
     end
     object EditSenha: TEdit
       Left = 121
@@ -176,6 +176,7 @@ object frmLogin: TfrmLogin
       ParentFont = False
       PasswordChar = '*'
       TabOrder = 1
+      Text = '1'
     end
     object BtnOK: TPanel
       Left = 191

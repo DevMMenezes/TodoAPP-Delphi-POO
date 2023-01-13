@@ -14,7 +14,7 @@ type
     LblTodoTitle: TLabel;
     LblMDev: TLabel;
     LblLogin: TLabel;
-    Image1: TImage;
+    ImgLogo: TImage;
     EditUsuario: TEdit;
     EditSenha: TEdit;
     BtnOK: TPanel;
@@ -27,6 +27,7 @@ type
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure btnCloseClick(Sender: TObject);
     procedure BtnOKClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   public
@@ -45,7 +46,7 @@ uses views.main, Utils, models.usuario, dao.dmconnection;
 
 procedure TfrmLogin.btnCloseClick(Sender: TObject);
 begin
-  Application.Terminate;
+  Close;
 end;
 
 procedure TfrmLogin.BtnFecharClick(Sender: TObject);
@@ -60,8 +61,9 @@ var
   sError: String;
   rRetornosLogin: TRetornosLogin;
 begin
-  { Criando a instâncias da minha model }
+  { Criando a instâncias da minha model e controller }
   oUsuario := TUsuarioModels.Create;
+  cUsuario := TUsuariosController.Create;
 
   try
     try
@@ -84,18 +86,19 @@ begin
       end
       else
       begin
-        ShowMessage('Erro ao validar as credenciais!');
+        Mensagem('Erro ao validar as credenciais!');
         EditSenha.SetFocus;
       end;
     except
       on E: Exception do
       begin
-        ShowMessage(E.Message + ' : ' + sError);
+        Mensagem(E.Message + ' : ' + sError);
       end;
     end;
   finally
     { Liberando as classes da memória }
     oUsuario.Free;
+    cUsuario.Free;
   end;
 end;
 
@@ -106,9 +109,9 @@ var
   sError: String;
   rRetornosLogin: TRetornosLogin;
 begin
-  { Criando a instâncias da minha model }
+  { Criando a instâncias da minha model e controller}
   oUsuario := TUsuarioModels.Create;
-
+  cUsuario := TUsuariosController.Create;
   try
     try
       { Com a instância criada, atribuo a classe instanciada }
@@ -131,19 +134,25 @@ begin
       end
       else
       begin
-        ShowMessage('Erro ao validar as credenciais!');
+        Mensagem('Erro ao validar as credenciais!');
         EditSenha.SetFocus;
       end;
     except
       on E: Exception do
       begin
-        ShowMessage(E.Message + ' : ' + sError);
+        Mensagem(E.Message + sError);
       end;
     end;
   finally
     { Liberando as classes da memória }
     oUsuario.Free;
+    cUsuario.Free;
   end;
+end;
+
+procedure TfrmLogin.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+Application.Terminate;
 end;
 
 procedure TfrmLogin.FormKeyDown(Sender: TObject; var Key: Word;

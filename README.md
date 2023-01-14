@@ -37,6 +37,10 @@
 
 ![Janelas](https://user-images.githubusercontent.com/92896461/212440098-1f1390f7-4af0-400d-b7f9-c55b347d891b.png)
 
+- Controle de MemoryLeaks com FastMM4
+
+![Controlede Memory](https://user-images.githubusercontent.com/92896461/212440724-a1d5a9e2-74fa-4bd6-aae4-d4dd444f0a2c.png)
+
 - Organização do Projeto
 
 ![Modularização](https://user-images.githubusercontent.com/92896461/212440179-73ab838a-7fe1-4346-8060-ed3cb79d6ea4.png)
@@ -44,6 +48,10 @@
 - Organização do Código
 
 ![Codigo](https://user-images.githubusercontent.com/92896461/212440215-a82acc33-c07c-4941-9fae-5b2cac92fb77.png)
+
+
+# Considerações
+- Obrigado por visitar este projeto, espero ter contribuido para o seu conhecimento!
 
 
 
